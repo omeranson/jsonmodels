@@ -377,16 +377,21 @@ BuildRequires: python3-invoke
 
 %build
 %py2_build
+%if 0%{?py3_build:1}
 %py3_build
+%endif
 
 %install
 %py2_install
+%if 0%{?py3_install:1}
 %py3_install
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %if 0%{?fedora:1}
+# Requires invoke, which is only available for Fedora
 %check
 PYTHONPATH=$(pwd) %{__python2} setup.py test
 PYTHONPATH=$(pwd) %{__python3} setup.py test
