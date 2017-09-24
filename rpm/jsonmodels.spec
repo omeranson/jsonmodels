@@ -390,12 +390,10 @@ PYTHONPATH=$(pwd) %{__python3} setup.py test
 Summary: Models to make easier to deal with structures that are converted to, or read from JSON.
 
 BuildRequires: python-dateutil
-BuildRequires: python-invoke
-BuildRequires: python2-pytest
+BuildRequires: pytest
 BuildRequires: python-pytest-cov
 BuildRequires: python-six
 Requires: python-dateutil
-Requires: python-invoke
 Requires: python-six
 
 %description -n     python2-%{name}
@@ -408,17 +406,16 @@ Requires: python-six
 %{python2_sitelib}/%{name}/
 %defattr(-,root,root)
 
+%if %{?fedora}
 %package -n     python3-%{name}
 Summary: Models to make easier to deal with structures that are converted to, or read from JSON.
 
 BuildRequires: python3-dateutil
-BuildRequires: python3-invoke
 BuildRequires: python3-pytest
 BuildRequires: python3-pytest-cov
-BuildRequires: python-six
+BuildRequires: python3-six
 Requires: python3-dateutil
-Requires: python3-invoke
-Requires: python-six
+Requires: python3-six
 
 %description -n     python3-%{name}
 %{desc}
@@ -429,4 +426,5 @@ Requires: python-six
 %{python3_sitelib}/%{name}-%{version}-py%{python3_version}.egg-info
 %{python3_sitelib}/%{name}/
 %defattr(-,root,root)
+%endif
 
