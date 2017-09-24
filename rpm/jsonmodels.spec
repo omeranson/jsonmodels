@@ -363,7 +363,11 @@ Vendor: Szczepan Cieślik <szczepan.cieslik@gmail.com>
 Url: https://github.com/beregond/jsonmodels
 
 BuildRequires: python2-devel
+%if 0%{?fedora:1}
 BuildRequires: python3-devel
+BuildRequires: python-invoke
+BuildRequires: python3-invoke
+%endif
 
 %description
 %{desc}
@@ -382,9 +386,11 @@ BuildRequires: python3-devel
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%if 0%{?fedora:1}
 %check
 PYTHONPATH=$(pwd) %{__python2} setup.py test
 PYTHONPATH=$(pwd) %{__python3} setup.py test
+%endif
 
 %package -n     python2-%{name}
 Summary: Models to make easier to deal with structures that are converted to, or read from JSON.
@@ -406,7 +412,7 @@ Requires: python-six
 %{python2_sitelib}/%{name}/
 %defattr(-,root,root)
 
-%if %{?fedora}
+%if 0%{?fedora:1}
 %package -n     python3-%{name}
 Summary: Models to make easier to deal with structures that are converted to, or read from JSON.
 
