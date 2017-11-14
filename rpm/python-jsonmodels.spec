@@ -256,7 +256,7 @@ BuildRequires: python3-invoke
 - Added embedded field.
 
 %prep
-%setup -q -n %{pypi_name}-%{version}
+%setup -n %{pypi_name}-%{version}
 
 %build
 %py2_build
