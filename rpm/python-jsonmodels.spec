@@ -1,7 +1,7 @@
 %global pypi_name jsonmodels
 # Tests require invoke, which is only available for Fedora
 %global use_tests 0%{?fedora:1}
-Summary: Models to make easier to deal with structures that are converted to, or read from JSON.
+Summary: Create Python structures that are converted to, or read from JSON
 Name: python-jsonmodels
 Version: 2.2
 Release: 1%{dist}
@@ -18,7 +18,8 @@ BuildRequires: python3-invoke
 %endif
 
 %description
-%{summary}
+Models to make it easier to deal with structures that are converted to, or
+read from JSON.
 
 %changelog \
 * Mon Aug 21 2017 Szczepan Cieślik <szczepan.cieslik@gmail.com> 2.2 \
