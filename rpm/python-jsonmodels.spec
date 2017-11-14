@@ -295,8 +295,8 @@ Requires: python-six
 %files -n python2-%{name}
 %license LICENSE
 %doc README.rst
-%{python2_sitelib}/%{name}-%{version}-py%{python2_version}.egg-info
-%{python2_sitelib}/%{name}/
+%{python2_sitelib}/%{pypi_name}-%{version}-py%{python2_version}.egg-info
+%{python2_sitelib}/%{pypi_name}/
 
 %if %{use_tests}
 %package -n     python3-%{name}
@@ -315,7 +315,7 @@ Requires: python3-six
 %files -n python3-%{name}
 %license LICENSE
 %doc README.rst
-%{python3_sitelib}/%{name}-%{version}-py%{python3_version}.egg-info
-%{python3_sitelib}/%{name}/
+%{python3_sitelib}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{pypi_name}/
 %endif
 
