@@ -1,6 +1,8 @@
 %global pypi_name jsonmodels
 # Tests require invoke, which is only available for Fedora
 %global use_tests 0%{?fedora:1}
+# Python3 is not available on centos
+%global is_install_py3 0%{?fedora:1}
 Summary: Create Python structures that are converted to, or read from JSON
 Name: python-jsonmodels
 Version: 2.2
@@ -12,8 +14,10 @@ Url: https://github.com/beregond/jsonmodels
 
 BuildRequires: python2-devel
 %if 0%{?use_tests:1}
-BuildRequires: python3-devel
 BuildRequires: python-invoke
+%endif
+%if 0%{?is_install_py3:1}
+BuildRequires: python3-devel
 BuildRequires: python3-invoke
 %endif
 
@@ -36,7 +40,7 @@ Python 2 models to make it easier to deal with structures that are
 converted to, or read from JSON.
 
 
-%if %{use_tests}
+%if %{is_install_py3}
 %package -n     python3-%{pypi_name}
 Summary: %summary
 
@@ -79,7 +83,7 @@ PYTHONPATH=$(pwd) %{__python3} setup.py test
 %{python2_sitelib}/%{pypi_name}-%{version}-py%{python2_version}.egg-info
 %{python2_sitelib}/%{pypi_name}/
 
-%if %{use_tests}
+%if %{is_install_py3}
 %files -n python3-%{pypi_name}
 %license LICENSE
 %doc README.rst
